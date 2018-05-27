@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AddressBookModelStoreContainer" CdmEntityContainer="AddressBookEntities">
+    <EntitySetMapping Name="BusinessContacts">
+      <EntityTypeMapping TypeName="AddressBookModel.BusinessContact">
+        <MappingFragment StoreEntitySet="BusinessContacts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Date_Added" ColumnName="Date_Added" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="Postal_Code" ColumnName="Postal_Code" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

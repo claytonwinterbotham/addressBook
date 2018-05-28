@@ -8,11 +8,11 @@ namespace AddressBook.Repo
 {
     class BusinessContactRepo
     {
-        AddressBookEntities context = new AddressBookEntities();
+        AddressBookEntities _context = new AddressBookEntities();
 
-        public BusinessContactRepo(AddressBookEntities _context)
+        public BusinessContactRepo(AddressBookEntities context)
         {
-            context = _context;
+            _context = context;
         }
 
         //Retrieve all business contacts
@@ -42,15 +42,15 @@ namespace AddressBook.Repo
             businessContact.Phone = phone;
             businessContact.Notes = notes;
 
-            context.BusinessContacts.Add(businessContact);  //Add businessContact object
-            context.SaveChanges(); //Save the changes
+            _context.BusinessContacts.Add(businessContact);  //Add businessContact object
+            _context.SaveChanges(); //Save the changes
         }
 
         //Update a business contact
         public void updateData(int id, DateTime date, string company, string website, string title, string fName, string lName, string address,
             string city, string province, string postalCode, string email, string phone, string notes)
         {
-            BusinessContact businessContact = (from b in context.BusinessContacts
+            BusinessContact businessContact = (from b in _context.BusinessContacts
                                                where b.ID == id
                                                select b).FirstOrDefault();
             if(businessContact != null)
@@ -68,41 +68,41 @@ namespace AddressBook.Repo
                 businessContact.Phone = phone;
                 businessContact.Notes = notes;
 
-                context.SaveChanges();
+                _context.SaveChanges();
             }
         }
 
         //Delete a business contact
         public void deleteData(int id)
         {
-            BusinessContact businessContact = (from b in context.BusinessContacts
+            BusinessContact businessContact = (from b in _context.BusinessContacts
                                                where b.ID == id
                                                select b).FirstOrDefault();
             if (businessContact != null)
             {
-                context.BusinessContacts.Remove(businessContact);
-                context.SaveChanges();
+                _context.BusinessContacts.Remove(businessContact);
+                _context.SaveChanges();
             }
         }
 
         //Search by first name
         public List<BusinessContact> getByFName(string fName)
         {
-            var contactList = context.BusinessContacts.Where(row => row.First_Name.ToLower().Contains(fName)).ToList();
+            var contactList = _context.BusinessContacts.Where(row => row.First_Name.ToLower().Contains(fName)).ToList();
             return contactList;
         }
 
         //Search by last name
         public List<BusinessContact> getByLName(string lName)
         {
-            var contactList = context.BusinessContacts.Where(row => row.Last_Name.ToLower().Contains(lName)).ToList();
+            var contactList = _context.BusinessContacts.Where(row => row.Last_Name.ToLower().Contains(lName)).ToList();
             return contactList;
         }
 
         //Search by company
         public List<BusinessContact> getCompany(string company)
         {
-            var contactList = context.BusinessContacts.Where(row => row.Company.ToLower().Contains(company)).ToList();
+            var contactList = _context.BusinessContacts.Where(row => row.Company.ToLower().Contains(company)).ToList();
             return contactList;
         }
 
